@@ -1,0 +1,102 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <div class="post-list">
+    <!-- CREATE NEW POST BTN -->
+    {% if user.is_authenticated %}
+      <h2>Blog Posts by {{ user.username }}</h2>
+    {% else %}
+      <h2>Blog Posts</h2>
+    {% endif %}
+
+
+    <!-- CREATE NEW POST BTN -->
+    {% if user.is_authenticated %}
+      <a href="{% url 'post_create' %}" class="btn btn-primary">Create New Post</a>
+    {% endif %}
+
+    <!-- SEARCH FILTER SORT CONTAINER -->
+    <div class="filter-sort-search">
+
+      <!-- SEARCH -->
+      <form method="GET" action="{% url 'post_list' %}" class="search-form">
+        <div class="search-bar">
+          <input type="text" name="search" placeholder="Search posts..." value="{{ request.GET.search }}" class="search-input">
+          <button type="submit" class="btn btn-search">Search</button>
+        </div>
+      </form>
+
+      <!-- FILTER -->
+      <form method="get" class="filter_by_author">
+        <button type="submit" class="btn btn-sort" name="filter_by_author" value="1" style="padding: 15px 10px;">Show My Posts</button>
+        <button type="submit" class="btn btn-sort" name="filter_by_author" value="" style="padding: 15px 10px;">Show All Posts</button>
+      </form>
+
+      <form method="GET" action="{% url 'post_list' %}" class="category-form">
+        <div class="category-filter">
+          <!-- <label for="category" class="category-label">Filter by Category:</label> -->
+          <select id="category" name="category" onchange="this.form.submit()" class="category-select">
+            <option value="">Select Category</option>
+            {% for category in categories %}
+              <option value="{{ category.id }}" {% if category.id == request.GET.category %} selected {% endif %}>
+                {{ category.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
+
+      <!-- SORT -->
+      <div class="sort-options">
+        <a href="?sort=published_date" class="btn btn-sort">Sort by Date</a>
+        <a href="?sort=title" class="btn btn-sort">Sort by Title</a>
+      </div>
+    </div>
+
+    <!-- POSTS LIST -->
+    <div class="posts">
+      {% for post in posts %}
+        <a href="{% url 'post_detail' post.id %}" class="post-link">
+          <div class="post">
+            <h3 class="post-title">{{ post.title }}</h3>
+            <p class="post-summary">{{ post.content|truncatewords:50 }}</p>
+            <p class="post-meta"><strong>By:</strong> {{ post.author }} <strong>On:</strong> {{ post.published_date }}</p>
+            
+            {% if user == post.author or user.is_superuser %}
+              <div class="post-actions">
+                <a href="{% url 'post_edit' post.id %}" class="btn btn-edit">Edit</a>
+                
+                <form method="POST" action="{% url 'post_delete' post.id %}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+              </div>
+            {% endif %}
+          </div>
+        </a>
+      {% empty %}
+        <p>No posts found.</p>
+      {% endfor %}
+    </div>
+
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+    
+        <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+    
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+{% endblock %}

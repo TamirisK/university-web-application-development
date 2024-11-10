@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <div class="post-detail">
+    
+    <!-- POST INFO -->
+    <h2>{{ object.title }}</h2>
+   
+    {% if object.image %}
+      <img src="{{ object.image.url }}" alt="{{ object.title }}" class="post-image">
+    {% endif %}
+   
+    <div class="post-meta">
+      <p>By <strong>{{ object.author }}</strong> on {{ object.published_date }}</p>
+    </div>
+   
+    <p>{{ object.content }}</p>
+
+    <!-- CATEGORIES -->
+    <p class="categories"><strong>Categories:</strong> 
+      {% for category in object.categories.all %}
+        <span>{{ category.name }}</span>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+    
+    <!-- COMMENTS -->
+    <h3>Comments</h3>
+    {% for comment in object.comments.all %}
+      <div class="comment">
+        <p><strong>{{ comment.author }}</strong>: {{ comment.content }} ({{ comment.created_date }})</p>
+        {% if comment.author == user %}
+          <a href="{% url 'edit_comment' comment.id %}" class="btn">Edit Comment</a>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No comments yet.</p>
+    {% endfor %}
+
+    <!-- ADD COMMENTS -->
+    {% if user.is_authenticated %}
+      <h3>Leave a Comment</h3>
+      
+      <form method="POST" action="{% url 'add_comment' object.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Add Comment</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

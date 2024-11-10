@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  /* background-color: #121212; Dark background for the body */
+  background-color: #4dd0e1;
+  color: #e0e0e0; /* Light text */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .logo a {
+  text-decoration: none;
+  color: #ffcc00;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar nav ul li {
+  margin: 0;
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  color: #ffcc00; /* Bright yellow for links */
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover and Active States for Navbar Links */
+.navbar nav ul li a:hover {
+  color: #4dd0e1; /* Light blue on hover */
+  background-color: #333; /* Slight darkening for hover effect */
+}
+
+.navbar nav ul li a.active {
+  color: #4dd0e1; /* Active link color */
+  background-color: #333; /* Darker background for active link */
+}
+
+/* Main Content Area */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1a1a1a; /* Slightly lighter gray for the content area */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2, h3 {
+  color: #ffcc00; /* Yellow for headings */
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+  background-color: #1f1f1f; /* Dark footer background */
+  color: #aaa; /* Light gray text for footer */
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Links and Buttons */
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #4dd0e1; /* Light blue on hover */
+  text-decoration: underline;
+}
+
+/* Button Styling */
+.btn {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: #121212;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+  color: #fff;
+}
+
+/* Form Inputs */
+input, select, textarea {
+  background-color: #2c2c2c; /* Dark background for inputs */
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #ffcc00;
+  color: #121212;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #e0a800;
+  color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+}
