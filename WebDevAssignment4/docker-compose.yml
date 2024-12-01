@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: blog_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - blog_net
+
+  redis:
+    image: redis:6
+    networks:
+      - blog_net
+
+  web:
+    build: .
+    command: gunicorn blog_project.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - blog_net
+
+volumes:
+  postgres_data:
+
+networks:
+  blog_net:
+    driver: bridge
