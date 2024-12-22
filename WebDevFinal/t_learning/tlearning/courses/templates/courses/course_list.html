@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}All Courses{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>All Courses</h1>
+    <a href="{% url 'course_create' %}" class="btn btn-primary">Create New Course</a>
+</div>
+
+<div class="courses-container">
+    {% for course in courses %}
+    <div class="course-card">
+        <h3><a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a></h3>
+        <p>{{ course.description|truncatewords:20 }}</p>
+        <span class="course-price">${{ course.price }}</span>
+        <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
+        <a href="{% url 'course_update' course.pk %}" class="btn btn-edit">Edit</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

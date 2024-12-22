@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    <div class="course-detail-container">
+        <h1>{{ course.title }}</h1>
+        <div class="course-detail">
+            <p><strong>Description:</strong> {{ course.description }}</p>
+            <p><strong>Price:</strong> ${{ course.price }}</p>
+            <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
+            <p><strong>Category:</strong> {{ course.category.name }}</p>
+            <p><strong>Created At:</strong> {{ course.created_at }}</p>
+        </div>
+        <a href="{% url 'course_update' course.pk %}" class="btn btn-primary">Edit Course</a>
+    </div>
+    <div class="reviews-section">
+        <h3>Reviews</h3>
+
+        {% for review in course.reviews.all %}
+            <div class="review-card">
+                <div class="review-details">
+                    <h4>{{ review.user.username }}</h4>
+                    <p>{{ review.comment }}</p>
+                    <div class="review-date">
+                        Reviewed on {{ review.created_at|date:"M d, Y" }}: {{ review.rating }} star
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No reviews yet. Be the first to review this course!</p>
+        {% endfor %}
+    </div>
+{% endblock %}

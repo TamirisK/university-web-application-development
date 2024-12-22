@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="container">
+        <h2>Enrollment List</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Course</th>
+                    <th>Enrollment Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enrollment in enrollments %}
+                <tr>
+                    <td>{{ enrollment.user.email }}</td>
+                    <td>{{ enrollment.course.title }}</td>
+                    <td>{{ enrollment.enrollment_date }}</td>
+                    <td>{{ enrollment.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'enrollment_create' %}" class="btn btn-primary">Add Enrollment</a>
+    </section>
+{% endblock %}

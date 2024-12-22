@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Enrollment Detail{% endblock %}
+
+{% block content %}
+<div class="enrollment-detail-container">
+    <h1>Enrollment for: {{ enrollment.course.title }}</h1>
+    <div class="enrollment-detail">
+        <p><strong>Status:</strong> {{ enrollment.status }}</p>
+        <p><strong>Enrollment Date:</strong> {{ enrollment.enrollment_date }}</p>
+        <p><strong>User:</strong> {{ enrollment.user.username }}</p>
+    </div>
+</div>
+{% endblock %}

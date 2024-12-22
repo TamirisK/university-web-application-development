@@ -1,0 +1,422 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    background-color: #f3f4f6;
+    color: #333;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #1a202c;
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #e2e8f0 !important;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #63b3ed !important;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+/* Section Header */
+section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* Form Styling */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 1.5rem;
+}
+
+form input,
+form select,
+form textarea,
+form button {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 1.1rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #63b3ed;
+    outline: none;
+    box-shadow: 0 0 5px rgba(99, 179, 237, 0.5);
+}
+
+form button {
+    background-color: #63b3ed;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 1rem;
+}
+
+form button:hover {
+    background-color: #4c9fe2;
+}
+
+/* Table Styles (for course lists, etc.) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #63b3ed;
+    color: #fff;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+td {
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+tr:hover {
+    background-color: #edf2f7;
+    transition: background-color 0.3s ease;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4c9fe2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #63b3ed;
+}
+
+.btn-success {
+    background-color: #48bb78;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #38a169;
+}
+
+.btn-danger {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c53030;
+}
+
+/* Card Styles (for course details) */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #4c9fe2;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    background-color: #fafafa;
+}
+
+.card-footer {
+    padding: 1.5rem;
+    background-color: #f7fafc;
+    text-align: center;
+}
+
+/* User Profile Section */
+.profile-header {
+    background-color: #4c9fe2;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.profile-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+    font-size: 1.1rem;
+}
+
+.user-progress {
+    margin-top: 2rem;
+}
+
+.progress {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #e2e8f0;
+}
+
+.progress-bar {
+    background-color: #38a169;
+    width: 70%;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    padding: 0.75rem 1.2rem;
+    border-radius: 5px;
+    color: #4c9fe2;
+    border: 1px solid #e2e8f0;
+    margin: 0 5px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.pagination a:hover {
+    background-color: #63b3ed;
+    color: white;
+    border-color: #63b3ed;
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.alert-success {
+    background-color: #48bb78;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.alert-warning {
+    background-color: #fbd38d;
+    color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    .card-header {
+        font-size: 1.1rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1.2rem;
+    }
+
+    .pagination {
+        flex-direction: column;
+    }
+
+    .pagination a {
+        margin: 5px 0;
+    }
+}
+
+/* Style for the 'Edit' button */
+table .btn-edit {
+    padding: 10px 20px; /* Slightly larger padding for better click area */
+    background-color: #2ecc71; /* A fresh green color */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+table .btn-edit:hover {
+    background-color: #27ae60; /* Darker green for hover effect */
+    transform: scale(1.05); /* Slight scale-up effect on hover */
+}
+
+table .btn-edit:active {
+    transform: scale(1); /* Returns to original size when clicked */
+}
+/* Reviews Section */
+.reviews-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.review-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.review-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-details h4 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.review-details .review-rating {
+    font-size: 14px;
+    color: #f39c12;
+}
+
+.review-details p {
+    font-size: 15px;
+    color: #555;
+    margin-top: 8px;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+}
+
+.review-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s;
+}
+

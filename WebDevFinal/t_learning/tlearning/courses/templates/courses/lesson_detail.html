@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Lesson: {{ lesson.title }}{% endblock %}
+
+{% block content %}
+<div class="lesson-detail-container">
+    <h1>{{ lesson.title }}</h1>
+    <div class="lesson-detail">
+        <p><strong>Content:</strong> {{ lesson.content }}</p>
+        <p><strong>Video:</strong> <a href="{{ lesson.video_url }}" target="_blank">Watch Lesson</a></p>
+    </div>
+    <a href="{% url 'lesson_update' lesson.pk %}" class="btn btn-primary">Edit Lesson</a>
+</div>
+{% endblock %}
